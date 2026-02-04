@@ -1,0 +1,169 @@
+:root {
+  --primary: #ff4d6d;
+  --primary-light: #ff758f;
+  --secondary: #590d22;
+  --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --text: #590d22;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-gradient);
+  overflow: hidden;
+  color: var(--text);
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
+  transition: transform 0.5s ease;
+  animation: fadeIn 1s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.image-container {
+  width: 100%;
+  max-height: 250px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+h1 span {
+  color: var(--primary);
+  display: block;
+  margin-top: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  height: 60px;
+}
+
+.btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: "Outfit", sans-serif;
+}
+
+.yes {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+}
+
+.yes:hover {
+  transform: scale(1.1);
+  background: var(--primary-light);
+  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+}
+
+.no {
+  background: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.no:hover {
+  background: #fff5f7;
+}
+
+/* Moving animation for No button is handled in JS */
+
+/* Sparkles Animation */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 20px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
